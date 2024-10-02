@@ -16,8 +16,8 @@ jobs:
         steps:
             - run: echo "${TEST}"
             - uses: actions/checkout@v4
-                with:
-                    ref: ${{ env.TEST }}
+              with:
+                  ref: ${{ env.TEST }}
     print_env_override:
         runs-on: ubuntu-latest
         env:
@@ -25,5 +25,5 @@ jobs:
         steps:
             - run: echo "${TEST}"
             - env:
-                TEST: hoge_step
-            - run: echo "${TEST}"
+                  TEST: hoge_step
+              run: echo "${TEST}"
