@@ -1,0 +1,29 @@
+name: Variables
+on: push
+env:
+    TEST: hoge_workflow
+jobs:
+    print_context:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "${{ github.actor }}"
+    print_default_env:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "${GITHUB_ACTION_PATH}"
+    print_env_workflow:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "${TEST}"
+            - uses: actions/checkout@v4
+                with:
+                    ref: ${{ env.TEST }}
+    print_env_override:
+        runs-on: ubuntu-latest
+        env:
+            TEST: hoge_job
+        steps:
+            - run: echo "${TEST}"
+            - env:
+                TEST: hoge_step
+            - run: echo "${TEST}"
