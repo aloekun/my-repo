@@ -5,4 +5,5 @@ jobs:
         runs-on: ubuntu-latest
         timeout-minutes: 1
         steps:
-            - run: sleep 120
+            - run: sleep 30
+            # - run: sleep 120 # if comment out this line, this workflow call error by timeout
