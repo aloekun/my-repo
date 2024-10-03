@@ -1,2 +1,7 @@
 name: Invalid
 on: push
+jobs: # If delete this line, static analyzer call error
+    repair: # If delete this line, static analyzer call error
+        runs-on: ubuntu-latest # If delete this line, static analyzer call error
+        steps: # If delete this line, static analyzer call error
+            - run: echo "Repair" # If delete this line, static analyzer call error
