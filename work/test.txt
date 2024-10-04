@@ -1,1 +1,1 @@
-fuga
+foo
