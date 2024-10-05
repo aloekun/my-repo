@@ -22,7 +22,5 @@ runs:
               CONTEXT: ${{ toJSON(github) }}
           shell: bash
         - id: current
-          run: |
-              date=$(date)
-              echo "date=${date}" >> "${GITHUB_OUTPUT}"
+          run: echo "date=$(date)" >> "${GITHUB_OUTPUT}"
           shell: bash
