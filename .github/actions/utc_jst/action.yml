@@ -4,7 +4,7 @@ inputs:
     utc:
         env:
             CURRENT_TIME: $(date +%s)
-        default: "${CURRENT_TIME}"
+        default: $(date +%s)
         required: false
         description: |
             タイムスタンプの入力がなければ、現在時刻で協定世界時を日本時間に変換します
