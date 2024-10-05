@@ -22,6 +22,8 @@ runs:
                 timestamp=${{ inputs.timestamp }}
               fi
               jst_timestamp=$(echo "$timestamp + $NINE_HOURS_IN_SECONDS" | bc)
+              echo "$jst_timestamp"
               jst_time=$(date -d "@$jst_timestamp" +"%a %m %d %H:%M:%S JST %Y")
+              echo "$jst_time"
               echo "jst_time=${jst_time}" >> $GITHUB_OUTPUT
           shell: bash
