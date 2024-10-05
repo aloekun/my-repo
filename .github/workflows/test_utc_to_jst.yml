@@ -1,0 +1,12 @@
+name: Test UTC to JST
+on: push
+jobs:
+    jst_convert:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: ./.github/actions/utc_jst/
+              id: jst
+            - env:
+                  OUTPUT_JST: "${{ steps.jst.outputs.jst }}"
+              run: echo "${OUTPUT_JST}"

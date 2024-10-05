@@ -1,0 +1,33 @@
+name: UTC to JTC
+description: 協定世界時を日本標準時に変換します
+inputs:
+    utc:
+        env:
+            CURRENT_TIME: $(date +%s)
+        default: ${CURRENT_TIME}
+        required: false
+        description: |
+            タイムスタンプの入力がなければ、現在時刻で協定世界時を日本時間に変換します
+            タイムスタンプの入力があれば、その時刻から9時間後ろにずらして日本時間に変換します
+outputs:
+    jst:
+        value: ${{ steps.current.outputs.jst }}
+        description: |
+            日本標準時の文字列
+            (曜日) (月) (日) 時:分:秒 JST (年)
+
+runs:
+    using: composite
+    steps:
+        - id: current
+          env:
+              INPUT_TIMESTAMP: "${{ inputs.utc }}"
+              NINE_HOURS: 32400
+          run: |
+              echo "${{ inputs.utc }}"
+              new_timestamp=$(echo "${INPUT_TIMESTAMP} + ${NINE_HOURS}" | bc)
+              echo "new_timestamp: $new_timestamp"
+              new_date=$(date -d "@$new_timestamp"+"%a %m $d $H:$M:$S JTC $Y")
+              echo "new_date: $new_date"
+              echo "jst=$(new_date)" >> "${GITHUB_OUTPUT}"
+          shell: bash
