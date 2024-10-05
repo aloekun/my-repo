@@ -1,5 +1,6 @@
 name: Dump
-description: 環境変数とgithubコンテキストをログへ出力します
+description: |
+    環境変数とgithubコンテキストをログへ出力します
     ワークフローのデバッグに便利です
 inputs:
     enable-context:
