@@ -1,0 +1,15 @@
+name: Convert UTC to JST
+on: push
+jobs:
+  convert-time:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Convert UTC to JST
+        id: convert
+        uses: ./.github/actions/convert-utc-to-jst/
+        with:
+          timestamp: ""  # 必要に応じてタイムスタンプを入力
+      - name: Output JST Time
+        run: echo "JST Time: ${{ steps.convert.outputs.jst_time }}"
+      - run: echo "${USERNAME}"
